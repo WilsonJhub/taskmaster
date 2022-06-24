@@ -4,10 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class AddTask extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,9 +14,9 @@ public class AddTask extends AppCompatActivity {
         setContentView(R.layout.activity_add_task);
 
 
-        ImageButton addTaskBackButton = AddTask.this.findViewById(R.id.backButton_AddTaskPage);
+        ImageButton addTaskBackButton = AddTaskActivity.this.findViewById(R.id.backButton_AddTaskPage);
         addTaskBackButton.setOnClickListener(v -> {
-            Intent goToMainActivityFromIntent = new Intent(AddTask.this, MainActivity.class);
+            Intent goToMainActivityFromIntent = new Intent(AddTaskActivity.this, HomeActivity.class);
             startActivity(goToMainActivityFromIntent);
 
         });
