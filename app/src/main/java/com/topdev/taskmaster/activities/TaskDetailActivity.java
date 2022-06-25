@@ -1,14 +1,18 @@
-package com.topdev.taskmaster;
+package com.topdev.taskmaster.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class AllTasksActivity extends AppCompatActivity {
+import com.topdev.taskmaster.R;
+
+public class TaskDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_tasks);
+        setContentView(R.layout.activity_task_detail);
+
+
     }
 }

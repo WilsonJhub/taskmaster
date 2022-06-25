@@ -14,19 +14,19 @@
         android:theme="@style/Theme.TaskMaster"
         tools:targetApi="31">
         <activity
-            android:name=".SettingsPageActivity"
+            android:name=".activities.SettingsPageActivity"
             android:exported="false" />
         <activity
-            android:name=".TaskDetailActivity"
+            android:name=".activities.TaskDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AllTasksActivity"
+            android:name=".activities.AllTasksActivity"
             android:exported="false" />
         <activity
-            android:name=".AddTaskActivity"
+            android:name=".activities.AddTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".activities.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

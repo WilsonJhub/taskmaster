@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow"
-    tools:context=".HomeActivity">
+    tools:context=".activities.HomeActivity">
 
     <Button
         android:id="@+id/addTasksButtonHomePage"
@@ -19,24 +19,9 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/taskDetailButtonHomePage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/allTasksButtonHomePage"
-        android:layout_width="319dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="56dp"
-        android:text="ALL TASKS"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/taskDetailButtonHomePage"
@@ -44,13 +29,26 @@
         android:layout_height="45dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:text="Task Detail"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/allTasksButtonHomePage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/allTasksButtonHomePage"
+        android:layout_width="319dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="16dp"
+        android:text="ALL TASKS"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -99,53 +97,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
-    <TextView
-        android:id="@+id/reviewHashMaps_HomePage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Review HashMaps/Tables"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/reviewLinkedListTask_HomePage"
-        app:layout_constraintTop_toBottomOf="@+id/reviewLinkedListTask_HomePage" />
-
-    <TextView
-        android:id="@+id/reviewStacksAndQueues_HomePage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Review Stacks and Queues"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintStart_toStartOf="@+id/reviewHashMaps_HomePage"
-        app:layout_constraintTop_toBottomOf="@+id/reviewHashMaps_HomePage" />
-
-    <TextView
-        android:id="@+id/reviewLinkedListTask_HomePage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="60dp"
-        android:text="Review LinkedList"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="italic"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/taskListRecyclerView"
+        android:layout_width="347dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="88dp"
+        android:background="#2A7895"
+        android:clipToPadding="false"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myTasks" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="105dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:text="Select Task"
-        android:textColor="#74000000"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myTasks" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
