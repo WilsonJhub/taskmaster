@@ -1,10 +1,12 @@
-package com.topdev.taskmaster;
+package com.topdev.taskmaster.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+
+import com.topdev.taskmaster.R;
 
 public class AddTaskActivity extends AppCompatActivity {
 
