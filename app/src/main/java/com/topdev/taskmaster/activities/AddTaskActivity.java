@@ -16,7 +16,7 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        setUpSpinner();
+//        setUpSpinner();
 
         ImageButton addTaskBackButton = AddTaskActivity.this.findViewById(R.id.backButton_AddTaskPage);
         addTaskBackButton.setOnClickListener(v -> {
@@ -28,11 +28,11 @@ public class AddTaskActivity extends AppCompatActivity {
         });
 
 
-        private void setUpSpinner(){
-            Spinner taskCategorySpinner = findViewById(R.id.myTaskUserInput_AddTaskPage);
-            taskCategorySpinner.set
-
-        }
+//        private void setUpSpinner(){
+//            Spinner taskCategorySpinner = findViewById(R.id.myTaskUserInput_AddTaskPage);
+//            taskCategorySpinner.set
+//
+//        }
 
     }
 }
