@@ -1,9 +1,5 @@
 package com.topdev.taskmaster.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,18 +9,27 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
+
 import com.topdev.taskmaster.R;
 import com.topdev.taskmaster.adapter.TaskListRecyclerViewAdapter;
-import com.topdev.taskmaster.models.Tasks;
+import com.topdev.taskmaster.database.TaskMasterDatabase;
+import com.topdev.taskmaster.models.Task;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 // Just like our main() -- entry point.
 public class HomeActivity extends AppCompatActivity {
     public static final String PRODUCT_NAME_TAG = "productName";
     SharedPreferences preferences;
-
+    TaskMasterDatabase taskMasterDatabase;
+    public static final String DATABASE_NAME = "task_master";
 
     @Override
     protected void onResume() {
@@ -55,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         Button orderButton = findViewById(R.id.addTasksButtonHomePage);
         orderButton.setOnClickListener(v -> {
             Intent goToOrderFormActivity = new Intent(HomeActivity.this, AddTaskActivity.class);
-            goToOrderFormActivity.putExtra(PRODUCT_NAME_TAG, "What does this mean??");
+            goToOrderFormActivity.putExtra(PRODUCT_NAME_TAG, "What does this mean??"); // Needs to be the same everywhere in you app.
         });
     }
 
@@ -75,10 +80,27 @@ public class HomeActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
+        // Database builder
+        taskMasterDatabase = Room.databaseBuilder(
+                        getApplicationContext(), // so that you only have a single database across the whole app.
+                        TaskMasterDatabase.class,
+                        DATABASE_NAME)
+                .allowMainThreadQueries() // Don't do this in a real app.
+                .fallbackToDestructiveMigration() // If Room gets confused, it tosses your database; don't use this in production!
+                .build();
+
+
+        taskMasterDatabase.taskDao().findAll();
+
+
+        setUpAddTasksButton();
+        setUpSettingsImageView();
+        setupTaskListRecyclerView();
+
 
 
         // Grab the button
-        Button addTasksSubmitButton = HomeActivity.this.findViewById(R.id.addTasksButtonHomePage);
+        Button addTasksSubmitButton = (Button)HomeActivity.this.findViewById(R.id.addTasksButtonHomePage);
         addTasksSubmitButton.setOnClickListener(v -> {
             Intent goToAddTasksFromIntent = new Intent(HomeActivity.this, AddTaskActivity.class);
             startActivity(goToAddTasksFromIntent);
@@ -109,6 +131,8 @@ public class HomeActivity extends AppCompatActivity {
             // Need class context we are coming from, and class we are going to so we can navigate back after.
         });
 
+    }
+
 
 
 //        TextView reviewLinkedList = (TextView)findViewById(R.id.reviewLinkedListTask_HomePage);
@@ -138,7 +162,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    }
     // rename this then call it in the onCreate method.
     // TODO: Step 1-1: Add a RecyclerView to the Activity in the WSYWIG editor
     // TODO: Step 1-2: Grab the RecyclerView
@@ -150,12 +173,12 @@ public class HomeActivity extends AppCompatActivity {
         taskListRecyclerView.setLayoutManager(layoutManager);
 
     // TODO: Step 2-2: Make some data items
-    List<Tasks> tasks = new ArrayList<>();
+    List<Task> tasks = new ArrayList<>();
 
-    tasks.add(new Tasks("Arrays"));
-    tasks.add(new Tasks("ArrayList"));
-    tasks.add(new Tasks("LinkedList"));
-    tasks.add(new Tasks("HashMaps"));
+//    tasks.add(new Task("Arrays"));
+//    tasks.add(new Task("ArrayList"));
+//    tasks.add(new Task("LinkedList"));
+//    tasks.add(new Task("HashMaps"));
 
 
     //  TODO: Step 1-5: Create and attach the RecyclerView.Adapter
@@ -166,6 +189,7 @@ public class HomeActivity extends AppCompatActivity {
         taskListRecyclerView.setAdapter(adapter);
     }
 }
+
 
 
 

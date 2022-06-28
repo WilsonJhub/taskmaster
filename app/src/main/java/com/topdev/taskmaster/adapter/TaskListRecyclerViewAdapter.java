@@ -12,10 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.topdev.taskmaster.R;
-import com.topdev.taskmaster.activities.AllTasksActivity;
 import com.topdev.taskmaster.activities.HomeActivity;
 import com.topdev.taskmaster.activities.TaskDetailActivity;
-import com.topdev.taskmaster.models.Tasks;
+import com.topdev.taskmaster.models.Task;
 
 import java.util.List;
 
@@ -25,12 +24,12 @@ import java.util.List;
 public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRecyclerViewAdapter.TaskListViewHolder> {
 
     // TODO: Step 2-3: Hand in data items
-    List<Tasks> tasks;
+    List<Task> tasks;
     // TODO: Step 3-2: Hand in the activity context.
     Context callingActivity;
 
 
-        public TaskListRecyclerViewAdapter(List<Tasks> _tasks, Context _callingActivity) {
+        public TaskListRecyclerViewAdapter(List<Task> _tasks, Context _callingActivity) {
             this.tasks = _tasks;
             this.callingActivity = _callingActivity;
         }
