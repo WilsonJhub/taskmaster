@@ -8,6 +8,35 @@
     tools:context=".activities.HomeActivity">
 
     <Button
+        android:id="@+id/allTasksButtonHomePage"
+        android:layout_width="319dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="112dp"
+        android:text="ALL TASKS"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/taskDetailButtonHomePage"
+        android:layout_width="319dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="16dp"
+        android:text="Task Detail"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/allTasksButtonHomePage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/addTasksButtonHomePage"
         android:layout_width="319dp"
         android:layout_height="51dp"
@@ -19,37 +48,10 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/taskDetailButtonHomePage"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/taskDetailButtonHomePage"
-        android:layout_width="319dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="8dp"
-        android:text="Task Detail"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/allTasksButtonHomePage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/allTasksButtonHomePage"
-        android:layout_width="319dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
-        android:text="ALL TASKS"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/myTasks"
@@ -102,13 +104,12 @@
         android:layout_width="347dp"
         android:layout_height="91dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="36dp"
         android:background="#2A7895"
         android:clipToPadding="false"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myTasks" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
