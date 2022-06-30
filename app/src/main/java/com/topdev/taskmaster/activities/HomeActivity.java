@@ -12,11 +12,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
+
 
 import com.topdev.taskmaster.R;
 import com.topdev.taskmaster.adapter.TaskListRecyclerViewAdapter;
-import com.topdev.taskmaster.database.TaskMasterDatabase;
 import com.topdev.taskmaster.models.Task;
 
 import java.util.ArrayList;
@@ -28,8 +27,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity {
     public static final String PRODUCT_NAME_TAG = "productName";
     SharedPreferences preferences;
-    TaskMasterDatabase taskMasterDatabase;
-    public static final String DATABASE_NAME = "task_master";
+
 
     @Override
     protected void onResume() {
@@ -80,17 +78,17 @@ public class HomeActivity extends AppCompatActivity {
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
-        // Database builder
-        taskMasterDatabase = Room.databaseBuilder(
-                        getApplicationContext(), // so that you only have a single database across the whole app.
-                        TaskMasterDatabase.class,
-                        DATABASE_NAME)
-                .allowMainThreadQueries() // Don't do this in a real app.
-                .fallbackToDestructiveMigration() // If Room gets confused, it tosses your database; don't use this in production!
-                .build();
-
-
-        taskMasterDatabase.taskDao().findAll();
+//        // Database builder
+//        taskMasterDatabase = Room.databaseBuilder(
+//                        getApplicationContext(), // so that you only have a single database across the whole app.
+//                        TaskMasterDatabase.class,
+//                        DATABASE_NAME)
+//                .allowMainThreadQueries() // Don't do this in a real app.
+//                .fallbackToDestructiveMigration() // If Room gets confused, it tosses your database; don't use this in production!
+//                .build();
+//
+//
+//        taskMasterDatabase.taskDao().findAll();
 
 
         setUpAddTasksButton();
@@ -162,30 +160,21 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    // rename this then call it in the onCreate method.
-    // TODO: Step 1-1: Add a RecyclerView to the Activity in the WSYWIG editor
-    // TODO: Step 1-2: Grab the RecyclerView
+
     private void setupTaskListRecyclerView(){
         RecyclerView taskListRecyclerView = findViewById(R.id.taskListRecyclerView);
-    // TODO: Step 1-3: Set the layout manager of the RecyclerView to a LinearLayoutManager(this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-    // TODO: Step 1-3: Set the layout manager
         taskListRecyclerView.setLayoutManager(layoutManager);
 
-    // TODO: Step 2-2: Make some data items
-    List<Task> tasks = new ArrayList<>();
 
+
+    List<Task> tasks = new ArrayList<>();
 //    tasks.add(new Task("Arrays"));
 //    tasks.add(new Task("ArrayList"));
 //    tasks.add(new Task("LinkedList"));
 //    tasks.add(new Task("HashMaps"));
 
-
-    //  TODO: Step 1-5: Create and attach the RecyclerView.Adapter
-    //  TODO: Step 2-3: Hand in data items(products in array)
-    //  TODO: Step 3-2: Give context to Adapter.
         TaskListRecyclerViewAdapter adapter = new TaskListRecyclerViewAdapter(tasks, this);
-    // TODO: Step 1-5: Set the adapter recyclerView
         taskListRecyclerView.setAdapter(adapter);
     }
 }

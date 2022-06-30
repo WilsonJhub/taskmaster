@@ -1,16 +1,14 @@
 package com.topdev.taskmaster.models;
 
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+
 
 import java.util.Date;
 
-// TODO: Step 2-1: Make a data a class
-@Entity
+
 public class Task {
 
-    @PrimaryKey(autoGenerate = true)
+
     public Long id;
     String name;
     String description;
