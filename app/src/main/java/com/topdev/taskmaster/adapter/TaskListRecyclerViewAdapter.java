@@ -11,10 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
 import com.topdev.taskmaster.R;
 import com.topdev.taskmaster.activities.HomeActivity;
 import com.topdev.taskmaster.activities.TaskDetailActivity;
-import com.topdev.taskmaster.models.Task;
 
 import java.util.List;
 
@@ -55,7 +55,7 @@ public class TaskListRecyclerViewAdapter extends RecyclerView.Adapter<TaskListRe
     // TODO: Step 3-1: Change to TaskListViewHolder
     public void onBindViewHolder(@NonNull TaskListViewHolder holder, int position) {
         TextView taskViewFragmentTextView = holder.itemView.findViewById(R.id.taskListFragmentaskListFragmentTextView);
-        String taskName = tasks.get(position).getName();
+        String taskName = tasks.get(position).getTitle();
         taskViewFragmentTextView.setText(position + ". " + taskName);
 
         // TODO: Step 3-3: Make OnClickHandler so we can interact with the RecyclerView items

@@ -19,11 +19,11 @@ public class Task {
 //        this.name = name;
 //    }
 
-    public Task(Long id, String name, String description, Date dateCreated, TaskCategoryEnum taskCategory) {
+    public Task(Long id, String name, String description, TaskCategoryEnum taskCategory) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.dateCreated = dateCreated;
+
         this.taskCategory = taskCategory;
     }
 
@@ -51,14 +51,6 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Date getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(Date dateCreated) {
-        this.dateCreated = dateCreated;
     }
 
     public TaskCategoryEnum getTaskCategory() {
