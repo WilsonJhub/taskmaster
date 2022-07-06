@@ -10,6 +10,9 @@ mutation CreateTask(
     taskCategory
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTask(
@@ -23,6 +26,9 @@ mutation UpdateTask(
     taskCategory
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTask(
@@ -36,5 +42,8 @@ mutation DeleteTask(
     taskCategory
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
