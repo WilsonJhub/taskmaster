@@ -7,6 +7,9 @@ subscription OnCreateTask {
     taskCategory
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTask {
@@ -17,6 +20,9 @@ subscription OnUpdateTask {
     taskCategory
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTask {
@@ -27,5 +33,8 @@ subscription OnDeleteTask {
     taskCategory
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

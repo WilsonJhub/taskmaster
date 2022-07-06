@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.amplifyframework.api.graphql.model.ModelQuery;
+import com.amplifyframework.auth.AuthUserAttributeKey;
+import com.amplifyframework.auth.options.AuthSignUpOptions;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.topdev.taskmaster.R;
@@ -51,6 +53,20 @@ public class HomeActivity extends AppCompatActivity {
         // Initialize shared preference
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        // HARDCODE COGNITO SIGNUP
+    Amplify.Auth.signUp("6789074634",
+            "poop",
+            AuthSignUpOptions.builder()
+                    .userAttribute(AuthUserAttributeKey.phoneNumber(), "6789074634")
+                    .userAttribute(AuthUserAttributeKey.nickname(), "Jason")
+                    .build(),
+            success -> {
+        Log.i(TAG, "Thank you for signing up! " + success.toString());
+            },
+            failure -> {
+        Log.i(TAG, "Signup failed with message: " + failure.toString());
+            }
+    );
 
 
         // Grab the button
@@ -120,14 +136,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
-
-//    private void saveUsername(){
-//        String usernameFromSettings = preferences.getString(SettingsPageActivity.USER_NICKNAME_TAG, "Tasks");
-//        String formattedTitle = String.format("%s's Tasks", usernameFromSettings);
-//        TextView usernameTaskTitle = findViewById(R.id.userNameInput);
-//        usernameTaskTitle.setText(formattedTitle);
-//    }
-
 
         private void setUpSettingsImageView(){
         ImageView userSettingsImageView = (ImageView) findViewById(R.id.settingsButtonHomePage);
