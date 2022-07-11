@@ -9,15 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.core.model.temporal.Temporal;
 import com.amplifyframework.datastore.generated.model.Task;
 import com.amplifyframework.datastore.generated.model.TaskCategoryEnum;
+import com.google.android.play.core.tasks.Tasks;
 import com.topdev.taskmaster.R;
 
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 
@@ -27,6 +31,11 @@ import java.util.concurrent.ExecutionException;
 public class AddTaskActivity extends AppCompatActivity {
 
     private static final String TAG = "Add Task Tag";
+    String[] categories = {"Linked List", "Stacks and Queues", "Binary Search Trees"};
+    Spinner taskSpinner = null;
+    CompletableFuture<List<Tasks>> tasksFuture = null;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
