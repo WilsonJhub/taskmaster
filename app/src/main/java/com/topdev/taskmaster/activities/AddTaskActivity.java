@@ -24,6 +24,14 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+import androidx.core.app.ActivityCompat;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Geocoder;
+import android.nfc.Tag;
 
 
 
@@ -35,6 +43,10 @@ public class AddTaskActivity extends AppCompatActivity {
     Spinner taskSpinner = null;
     CompletableFuture<List<Tasks>> tasksFuture = null;
 
+
+
+    FusedLocationProviderClient fusedLocationClient = null;
+    Geocoder geocoder;
 
 
     @Override
@@ -49,6 +61,12 @@ public class AddTaskActivity extends AppCompatActivity {
         addTaskBackButton.setOnClickListener(v -> {
             Intent goToMainActivityFromIntent = new Intent(AddTaskActivity.this, HomeActivity.class);
             startActivity(goToMainActivityFromIntent);
+
+            //Step 2: request permissions
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);  // hardcoded to 1; you can pick anything between 1 and 65535
+            // Step 3: give fusedLocationClient value
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
+            fusedLocationClient.flushLocations();
 
 
         });
@@ -88,12 +106,17 @@ public class AddTaskActivity extends AppCompatActivity {
 //                    // TODO: get rid of enum
 //                    categories));
 //        }
+
+
+
     }
 
 
         private void setUpSaveButton () {
 //            Spinner taskCategorySpinner = findViewById(R.id.addATaskCategoryInput);
             Button saveNewTaskButton = findViewById(R.id.addTaskButton_AddTaskPage);
+
+
 
             saveNewTaskButton.setOnClickListener(new View.OnClickListener() {
                 @Override
